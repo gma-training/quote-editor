@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:edit, :show, :update]
+  before_action :set_quote, only: [:destroy, :edit, :show, :update]
 
   def index
     @quotes = Quote.all
@@ -31,6 +31,11 @@ class QuotesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @quote.destroy
+    redirect_to quotes_path, notice: "Quote deleted"
   end
 
   private
