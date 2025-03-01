@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show]
+  before_action :set_quote, only: [:edit, :show, :update]
 
   def index
     @quotes = Quote.all
@@ -19,6 +19,17 @@ class QuotesController < ApplicationController
       redirect_to quotes_path, notice: "Quote created"
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @quote.update(quote_params)
+      redirect_to quotes_path, notice: "Quote created"
+    else
+      render :edit
     end
   end
 
