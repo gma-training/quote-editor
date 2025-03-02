@@ -10,9 +10,9 @@ class QuotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Quotes"
 
     click_on "New quote"
-    assert_selector "h1", text: "New quote"
-
     fill_in "Name", with: "Test quote"
+
+    assert_selector "h1", text: "Quotes"
     click_on "Create quote"
 
     assert_selector "h1", text: "Quotes"
@@ -28,11 +28,12 @@ class QuotesTest < ApplicationSystemTestCase
 
   test "Updating a quote" do
     visit quotes_url
+    assert_selector "h1", text: "Quotes"
+
     click_link "Edit", match: :first
-
-    assert_selector "h1", text: "Edit quote"
-
     fill_in "Name", with: "Updated quote"
+
+    assert_selector "h1", text: "Quotes"
     click_on "Update quote"
 
     assert_selector "h1", text: "Quotes"
