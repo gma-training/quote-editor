@@ -2,7 +2,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: [:destroy, :edit, :show, :update]
 
   def index
-    @quotes = Quote.all
+    @quotes = Quote.ordered
   end
 
   def show
